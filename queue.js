@@ -115,8 +115,19 @@ function pairDancers(arr) {
   return results;
 }
 
-function ophidianBank() {
+function ophidianBank(people) { 
+  let q = new Queue();
+  for(let i = 0; i < people.length; i++){
+    q.enqueue(people[i])
+  }
   
+  while(!isEmpty(q)){
+    let person = q.dequeue()
+    console.log(`serving ${person}`)
+    if(Math.random() <= 0.25) {
+      q.enqueue(person)
+    } 
+  }
 }
 
 function main2() {
@@ -133,8 +144,14 @@ function main2() {
     'F Bb',
     'F Cc',
   ];
-  // console.log(pairDancers(dancers));
 
+  let people = [
+    'Jane',
+    'Frank',
+    'John',
+    'Sherlock',
+  ];
+  ophidianBank(people);
 
 }
 main2();
