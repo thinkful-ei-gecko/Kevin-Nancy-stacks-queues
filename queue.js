@@ -73,4 +73,68 @@ function main() {
   // console.log(JSON.stringify(peek(q), null, 2));
   console.log(display(q));
 }
-main();
+// main();
+
+function pairDancers(arr) {
+  let qf = new Queue();
+  let qm = new Queue();
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].substring(0, 1) === 'F') {
+      qf.enqueue(arr[i]);
+    } else {
+      qm.enqueue(arr[i]);
+    }
+  }
+
+  let results = '';
+  while (!isEmpty(qm) && !isEmpty(qf)) {
+    let man = qm.dequeue();
+    let woman = qf.dequeue();
+    results += `
+    Female dancer is ${woman.substring(2)}, and the male dancer is ${man.substring(2)}`;
+  }
+  if (!isEmpty(qm)) {
+    let count = 0;
+    while (!isEmpty(qm)) {
+      qm.dequeue();
+      count++;
+    }
+    results += `
+    There are ${count} male dancers waiting to dance`;
+  }
+  if (!isEmpty(qf)) {
+    let count = 0;
+    while (!isEmpty(qf)) {
+      qf.dequeue();
+      count++;
+    }
+    results += `
+    There are ${count} female dancers waiting to dance`;
+  }
+
+  return results;
+}
+
+function ophidianBank() {
+  
+}
+
+function main2() {
+  let dancers = [
+    'F Jane',
+    'M Frank',
+    'M John',
+    'M Sherlock',
+    'F Madonna',
+    'M David',
+    'M Christopher',
+    'F Beyonce',
+    'F Aa',
+    'F Bb',
+    'F Cc',
+  ];
+  // console.log(pairDancers(dancers));
+
+
+}
+main2();
